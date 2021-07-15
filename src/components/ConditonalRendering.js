@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 
-const HookForm = (props) => {
+const ConditionalRendering = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+
   
   const createUser = (e) => {
     //prevent the default refresh of browser
@@ -21,19 +23,28 @@ const HookForm = (props) => {
       confirmPassword
     };
     console.log("Welcome", newUser);
+    setFirstName("");
+    setLastName("");
+
+    setHasBeenSubmitted(true);
   };
   return (
     
     <>
       <header>
-        <h1>Hook Form</h1>
-        <h4>Type your info in the text fields to see it appear in resluts section</h4>
+        <h1>Conditional Rendering</h1>
+        
       </header>
       <form onSubmit = {createUser}>
+        {
+          hasBeenSubmitted ?
+          <h4>Thank you for submitting the form!</h4> :
+          <h4>Welcome, please fill out and submit the form.</h4>
+        }
         <div className="inptGrp">
           <label>First Name: </label>
           <input 
-            id="firstName" 
+            id="firstNameCR" 
             type="text" 
             value = {firstName} 
             onChange ={(e)=>setFirstName(e.target.value)}
@@ -43,7 +54,7 @@ const HookForm = (props) => {
         <div className="inptGrp">
           <label>Last Name: </label>
           <input 
-            id="lastName" 
+            id="lastNameCR" 
             type="text" 
             value = {lastName} 
             onChange ={(e)=>setLastName(e.target.value)}
@@ -53,8 +64,8 @@ const HookForm = (props) => {
         <div className="inptGrp">
           <label>Email: </label>
           <input 
-            id="email" 
-            type="text" 
+            id="emailCR" 
+            type="email" 
             value = {email} 
             onChange ={(e)=>setEmail(e.target.value)}
             
@@ -63,22 +74,23 @@ const HookForm = (props) => {
         <div className="inptGrp">
           <label>Password: </label>
           <input 
-            id="password" 
-            type="text" 
+            id="passwordCR" 
+            type="password" 
             value = {password} 
             onChange ={(e)=>setPassword(e.target.value)}/>
         </div>
         <div className="inptGrp">
           <label>Confirm Password: </label>
           <input 
-            id ="confirmPassword" 
-            type="text" 
+            id ="confirmPasswordCR" 
+            type="password" 
             value = {confirmPassword} 
             onChange ={(e)=>setConfirmPassword(e.target.value)}/>
         </div>
+        <input type="submit" value ="Create User" />
       </form>
     
-      <div className = "results">
+      <div className = "resultsCR">
         <h2>Dynamically Generated Data from Inputs</h2>
         <p><label>First Name: </label>{firstName}</p>
         <p><label>Last Name: </label>{lastName}</p>
@@ -93,4 +105,4 @@ const HookForm = (props) => {
 
 };
 
-export default HookForm;
+export default ConditionalRendering;

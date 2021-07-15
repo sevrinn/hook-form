@@ -3,7 +3,11 @@
 .results {
   background-color: thistle;
 }
-.results {
+.resultsCR {
+  background-color: khaki;
+}
+.results,
+.resultsCR {
   padding: 30px;
 }
 label {

@@ -1,0 +1,33 @@
+.App {
+}
+.results {
+  background-color: thistle;
+}
+.results {
+  padding: 30px;
+}
+label {
+  font-weight: bold;
+  width: fit-content;
+
+  padding: 10px;
+  padding-right: 30px;
+}
+.inptGrp {
+  padding: 10px 30px;
+}
+
+h1,
+h4 {
+  text-align: center;
+  margin: 0 auto;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

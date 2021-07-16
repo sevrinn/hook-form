@@ -28,6 +28,7 @@ const HookForm = (props) => {
       <header>
         <h1>Hook Form</h1>
         <h4>Type your info in the text fields to see it appear in resluts section</h4>
+        <p>The validation for the "More Forms" assignment is rendered just after this hookforms section</p>
       </header>
       <form onSubmit = {createUser}>
         <div className="inptGrp">
@@ -79,7 +80,7 @@ const HookForm = (props) => {
       </form>
     
       <div className = "results">
-        <h2>Dynamically Generated Data from Inputs</h2>
+        <h2>Your Data (HookForm assignment)</h2>
         <p><label>First Name: </label>{firstName}</p>
         <p><label>Last Name: </label>{lastName}</p>
         <p><label>Email: </label>{email}</p>

@@ -7,7 +7,59 @@ const ConditionalRendering = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+  const [fNameError, setFNameError] = useState("");
+  const [lNameError, setLNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("")
 
+
+  const handleFName = (e) => {
+    setFirstName(e.target.value)
+    if(e.target.value.length < 1) {
+      setFNameError("First Name is required, babe");
+    } else if (e.target.value.length< 2) {
+      setFNameError("First Name needs to be 2 or more characters");
+    } else {
+      setFNameError("");
+    }
+  };
+  const handleLName = (e) => {
+    setLastName(e.target.value)
+    if(e.target.value.length< 1) {
+      setLNameError("Last Name is required, babe");
+    } else if (e.target.value.length<2) {
+      setLNameError("Last Name needs to be 2 or more characters");
+    } else {
+      setLNameError("");
+    }
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    if(e.target.value.length<1) {
+      setEmailError("Email is also required, love");
+    } else if (e.target.value.length<5) {
+      setEmailError("Email has to be more than 5 characters. sorry!");
+    } else {
+      setEmailError("");
+    }
+  }
+  const handlePassword = (e) => {
+    setPassword(e.target.value)
+    if(e.target.value.length<8) {
+      setPasswordError("Password's got to be more than 8 characters");
+    } else {
+      setPasswordError("");
+    } 
+   }
+   const handleConfirmPassword = (e) => {
+     setConfirmPassword(e.target.value);
+     if(e.target.value !== password) {
+       setConfirmPasswordError("These passwords don't match. Try again!");
+     } else {
+       setConfirmPasswordError("");
+     }
+   }
   
   const createUser = (e) => {
     //prevent the default refresh of browser
@@ -22,7 +74,7 @@ const ConditionalRendering = (props) => {
       password,
       confirmPassword
     };
-    console.log("Welcome", newUser);
+    console.log("Welcome, ", newUser.firstName + " " + newUser.lastName);
     setFirstName("");
     setLastName("");
 
@@ -32,7 +84,7 @@ const ConditionalRendering = (props) => {
     
     <>
       <header>
-        <h1>Conditional Rendering</h1>
+        <h1>Conditional Rendering & More Forms</h1>
         
       </header>
       <form onSubmit = {createUser}>
@@ -47,9 +99,13 @@ const ConditionalRendering = (props) => {
             id="firstNameCR" 
             type="text" 
             value = {firstName} 
-            onChange ={(e)=>setFirstName(e.target.value)}
-            
+            onChange ={(e)=>handleFName(e)}
             />
+            {
+              fNameError ?
+              <p>{fNameError}</p> :
+              ''
+            }
         </div>
         <div className="inptGrp">
           <label>Last Name: </label>
@@ -57,9 +113,13 @@ const ConditionalRendering = (props) => {
             id="lastNameCR" 
             type="text" 
             value = {lastName} 
-            onChange ={(e)=>setLastName(e.target.value)}
-            
+            onChange ={(e)=>handleLName(e)}
             />
+            {
+              lNameError ? 
+              <p>{lNameError}</p> :
+              ''
+            }
         </div>
         <div className="inptGrp">
           <label>Email: </label>
@@ -67,9 +127,13 @@ const ConditionalRendering = (props) => {
             id="emailCR" 
             type="email" 
             value = {email} 
-            onChange ={(e)=>setEmail(e.target.value)}
-            
+            onChange ={(e)=>handleEmail(e)}
             />
+            {
+              emailError ?
+              <p>{emailError}</p> :
+              ''
+            }
         </div>
         <div className="inptGrp">
           <label>Password: </label>
@@ -77,7 +141,13 @@ const ConditionalRendering = (props) => {
             id="passwordCR" 
             type="password" 
             value = {password} 
-            onChange ={(e)=>setPassword(e.target.value)}/>
+            onChange ={(e)=>handlePassword(e)}
+            />
+            {
+              passwordError ? 
+              <p>{passwordError}</p> :
+              ''
+            }
         </div>
         <div className="inptGrp">
           <label>Confirm Password: </label>
@@ -85,13 +155,19 @@ const ConditionalRendering = (props) => {
             id ="confirmPasswordCR" 
             type="password" 
             value = {confirmPassword} 
-            onChange ={(e)=>setConfirmPassword(e.target.value)}/>
+            onChange ={(e)=>handleConfirmPassword(e)}
+            />
+            {
+              confirmPasswordError ? 
+              <p>{confirmPasswordError}</p> : 
+              ''
+            }
         </div>
         <input type="submit" value ="Create User" />
       </form>
     
       <div className = "resultsCR">
-        <h2>Dynamically Generated Data from Inputs</h2>
+        <h2>Your Data (MoreForms Assignment)</h2>
         <p><label>First Name: </label>{firstName}</p>
         <p><label>Last Name: </label>{lastName}</p>
         <p><label>Email: </label>{email}</p>

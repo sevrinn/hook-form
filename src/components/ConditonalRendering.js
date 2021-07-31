@@ -143,10 +143,12 @@ const Form = (props) => {
     
     <>
       <header>
-        <h1>Conditional Rendering & More Forms</h1>
+        <h1>Hook Form</h1>
+        <h2>With conditional rendering</h2>
         
       </header>
       <form onSubmit = {createUser}>
+      {/* This piece of code will change when the form has been submitted */}
         {
           hasBeenSubmitted ?
           <h4>Thank you for submitting the form!</h4> :

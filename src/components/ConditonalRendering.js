@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 
-const ConditionalRendering = (props) => {
+
+const Form = (props) => {
+
+  /**
+   * Setting State of input variables and error messages
+   */
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +18,16 @@ const ConditionalRendering = (props) => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("")
 
-
+  /**
+   * first name handler takes in event
+   * sets first name to the value of the target event
+   * if the length of the value of target event is LESS THAN 1 (aka nothing is entered)
+   *  set the first name error var to the message
+   * otherwise if length of target value is less than 2
+   *  set first name error var to this other message
+   * otherwise
+   *  set first name error back to empty string 
+   */
   const handleFName = (e) => {
     setFirstName(e.target.value)
     if(e.target.value.length < 1) {
@@ -24,6 +38,17 @@ const ConditionalRendering = (props) => {
       setFNameError("");
     }
   };
+
+  /**
+   * last name handler takes in event
+   * sets last name to the value of target event
+   * IF the length of the value of target event is LESS than 1 (nothing is entered)
+   *  set the last name error var to the message
+   * otherwise IF length of target is less than 2
+   *  set last name error var to this other message
+   * otherwise 
+   *  set last name error back to empty string 
+   */
   const handleLName = (e) => {
     setLastName(e.target.value)
     if(e.target.value.length< 1) {
@@ -34,6 +59,17 @@ const ConditionalRendering = (props) => {
       setLNameError("");
     }
   };
+
+  /**
+   * email handler takes in event
+   * sets email to the value of target event
+   * IF the length of the value of target event is LESS than 1 (nothing is entered)
+   *  set the email error var to the message
+   * otherwise IF length of target is less than 5
+   *  set email error var to this other message
+   * otherwise 
+   *  set email error back to empty string 
+   */
   const handleEmail = (e) => {
     setEmail(e.target.value);
     if(e.target.value.length<1) {
@@ -44,6 +80,14 @@ const ConditionalRendering = (props) => {
       setEmailError("");
     }
   }
+  /**
+   * password handler takes in event
+   * sets password to the value of target event
+   * IF the length of the value of target event is LESS than 1 (nothing is entered)
+   *  set the password error var to the message
+   * otherwise 
+   *  set password error back to empty string 
+   */
   const handlePassword = (e) => {
     setPassword(e.target.value)
     if(e.target.value.length<8) {
@@ -52,6 +96,14 @@ const ConditionalRendering = (props) => {
       setPasswordError("");
     } 
    }
+   /**
+   * confirm password handler takes in event
+   * sets confirm password to the value of target event
+   * IF the length of the value of target event is LESS than 1 (nothing is entered)
+   *  set theconfirm  password error var to the message
+   * otherwise 
+   *  set confirm password error back to empty string 
+   */
    const handleConfirmPassword = (e) => {
      setConfirmPassword(e.target.value);
      if(e.target.value !== password) {
@@ -60,7 +112,9 @@ const ConditionalRendering = (props) => {
        setConfirmPasswordError("");
      }
    }
-  
+/**
+ * when button is clicked newUser obj is created with data typed into form
+ */
   const createUser = (e) => {
     //prevent the default refresh of browser
     //to keep state from being reset
@@ -74,9 +128,14 @@ const ConditionalRendering = (props) => {
       password,
       confirmPassword
     };
+    //writes "Welcome, firstname lastname" to the console
     console.log("Welcome, ", newUser.firstName + " " + newUser.lastName);
+    //sets first/lastName variables back to empty strings
     setFirstName("");
     setLastName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
 
     setHasBeenSubmitted(true);
   };
@@ -167,7 +226,7 @@ const ConditionalRendering = (props) => {
       </form>
     
       <div className = "resultsCR">
-        <h2>Your Data (MoreForms Assignment)</h2>
+        <h2>Your Data</h2>
         <p><label>First Name: </label>{firstName}</p>
         <p><label>Last Name: </label>{lastName}</p>
         <p><label>Email: </label>{email}</p>
@@ -181,4 +240,4 @@ const ConditionalRendering = (props) => {
 
 };
 
-export default ConditionalRendering;
+export default Form;

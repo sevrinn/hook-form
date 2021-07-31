@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 // import HookForm from './components/HookForm'
 import Form from './components/ConditonalRendering'
-import MovieForm from './components/HandlingValidations';
+// import MovieForm from './components/HandlingValidations';
 // import HookForm from './components/HookForm';
 
 function App() {
@@ -10,9 +10,19 @@ function App() {
     <div className="App">
       
       <Form />
-      <MovieForm />
+      
     </div>
   );
 }
 
 export default App;
+
+/**
+ * imports react
+ * imports App.css
+ * imports Form from ConditionalRendering.js
+ * 
+ * returns form component wrapped in a div
+ * 
+ * exports App
+ */

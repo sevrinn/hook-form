@@ -4,11 +4,29 @@
   background-color: thistle;
 }
 .resultsCR {
+  margin: 20px;
   background-color: khaki;
+}
+form {
+  width: 400px;
+  margin: 50px auto;
+}
+
+input {
+  background-color: khaki;
+  border: none;
+  height: 20px;
+  float: right;
+}
+input[type="submit"] {
+  float: unset;
+  margin-left: 40%;
 }
 .results,
 .resultsCR {
   padding: 30px;
+  width: 375px;
+  margin: 0 auto;
 }
 label {
   font-weight: bold;
